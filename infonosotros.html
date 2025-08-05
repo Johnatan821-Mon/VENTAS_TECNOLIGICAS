@@ -1,12 +1,53 @@
-<!-- carrito.html-->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>TecnoVentas - Carrito de Compras</title>
+    <title>Información - TecnoVentas</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .info-container {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.7s;
+            max-width: 700px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            padding: 2rem;
+        }
+        .info-container.active {
+            display: block;
+            opacity: 1;
+        }
+        .info-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0 1rem 0;
+        }
+        .info-nav button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .info-nav button.active {
+            background: #0056b3;
+        }
+        .info-nav button:hover {
+            background: #0056b3;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
 </head>
-<body class="carrito-body">
+<body class="info-body">
     <header class="header">
         <a href="index.html" class="logo">
             <img src="logo.svg" alt="TecnoVentas Logo">
@@ -15,43 +56,28 @@
         <nav class="nav">
             <a href="productos.html">Productos</a>
             <a href="categorias.html">Categorías</a>
-            <a href="carrito.html">🛒 Carrito</a> 
-           
+            <a href="carrito.html">🛒 Carrito</a>
         </nav>
     </header>
-    
-    <main class="main-content">
-        <h1>🛒 Carrito de Compras</h1>
-        <p>Revisa los productos seleccionados</p>
-        
-        <div id="carrito-items">
-            <div id="carrito-vacio" style="text-align: center; padding: 3rem;">
-                <h3>Tu carrito está vacío</h3>
-                <p>¡Agrega algunos productos increíbles!</p>
-                <a href="productos.html" class="btn">Ver Productos</a>
-            </div>
-        </div>
-        
-        <div class="carrito-total" id="carrito-total" style="display: none;">
-            <h3>Resumen del Pedido</h3>
-            <div style="margin: 1rem 0;">
-                <span>Subtotal: $<span id="subtotal">0.00</span></span><br>
-                <span>Impuestos (10%): $<span id="impuestos">0.00</span></span><br>
-                <span>Envío: $<span id="envio">15.00</span></span>
-            </div>
-            <hr style="margin: 1rem 0;">
-            <div style="font-size: 1.3rem; font-weight: bold;">
-                Total: $<span id="total-final">0.00</span>
-            </div>
-            <button class="btn" style="margin-top: 1rem; width: 200px;" onclick="procederPago()">
-                Proceder al Pago
-            </button>
-            <button class="btn" style="margin-top: 0.5rem; width: 200px; background: #dc3545;" onclick="vaciarCarrito()">
-                Vaciar Carrito
-            </button>
+    <main class="info-main">
+        <h1>Sobre Nosotros</h1>
+        <div class="info-container active">
+            <h2>Misión</h2>
+            <p>Brindar soluciones tecnológicas innovadoras y de alta calidad que mejoren la vida de nuestros clientes, ofreciendo asesoría personalizada y un servicio excepcional en cada etapa de la experiencia de compra.</p>
+            <h2>Visión</h2>
+            <p>Ser la empresa líder en el sector tecnológico, reconocida por la excelencia en el servicio, la innovación constante y el compromiso con el desarrollo tecnológico de nuestra comunidad.</p>
+            <h2>Valores Corporativos</h2>
+            <ul>
+                <li><strong>Innovación:</strong> Buscamos siempre estar a la vanguardia y ofrecer productos y servicios novedosos.</li>
+                <li><strong>Calidad:</strong> Garantizamos productos y atención de la más alta calidad.</li>
+                <li><strong>Compromiso:</strong> Nos comprometemos con la satisfacción y el bienestar de nuestros clientes.</li>
+                <li><strong>Integridad:</strong> Actuamos con honestidad y transparencia en todas nuestras acciones.</li>
+                <li><strong>Trabajo en equipo:</strong> Fomentamos la colaboración y el respeto entre todos los miembros de la compañía.</li>
+            </ul>
+            <h2>Objetivo General</h2>
+            <p>Consolidar a TecnoVentas como la mejor opción en tecnología, ofreciendo productos y servicios que superen las expectativas de nuestros clientes y contribuyan al desarrollo tecnológico de la sociedad.</p>
         </div>
     </main>
-    
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -67,7 +93,6 @@
                     <a href="#" title="LinkedIn">💼</a>
                 </div>
             </div>
-            
             <div class="footer-section">
                 <h3>Navegación</h3>
                 <ul class="footer-links">
@@ -77,7 +102,6 @@
                     <li><a href="carrito.html">Carrito</a></li>
                 </ul>
             </div>
-            
             <div class="footer-section">
                 <h3>Contacto</h3>
                 <div class="contact-info">
@@ -87,7 +111,6 @@
                     <p><strong>Horario:</strong> Lun-Sab 9:00-18:00</p>
                 </div>
             </div>
-            
             <div class="footer-section">
                 <h3>Información</h3>
                 <ul class="footer-links">
@@ -99,12 +122,9 @@
                 </ul>
             </div>
         </div>
-        
         <div class="footer-bottom">
             <p>&copy; 2024 TecnoVentas. Todos los derechos reservados. | Diseñado con ❤️ para los amantes de la tecnología</p>
         </div>
     </footer>
-    
-    <script src="script.js"></script>
 </body>
 </html>

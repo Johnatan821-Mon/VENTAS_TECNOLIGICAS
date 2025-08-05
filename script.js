@@ -5,32 +5,32 @@ class CarritoCompras {
             'laptop-gaming': {
                 nombre: 'Laptop Gaming Pro',
                 precio: 1299.99,
-                imagen: 'https://via.placeholder.com/300x200/667eea/ffffff?text=Laptop'
+                imagen: 'imagenes/laptop.avif'
             },
             'smartphone-ultra': {
                 nombre: 'Smartphone Ultra',
                 precio: 699.99,
-                imagen: 'https://via.placeholder.com/300x200/764ba2/ffffff?text=Smartphone'
+                imagen: 'imagenes/celular.webp'
             },
             'tablet-pro': {
                 nombre: 'Tablet Pro',
                 precio: 899.99,
-                imagen: 'https://via.placeholder.com/300x200/667eea/ffffff?text=Tablet'
+                imagen: 'imagenes/tablet.jpg'
             },
             'auriculares-wireless': {
                 nombre: 'Auriculares Inalámbricos',
                 precio: 199.99,
-                imagen: 'https://via.placeholder.com/300x200/764ba2/ffffff?text=Auriculares'
+                imagen: 'imagenes/auriculares.webp'
             },
             'monitor-4k': {
                 nombre: 'Monitor 4K Gaming',
                 precio: 449.99,
-                imagen: 'https://via.placeholder.com/300x200/667eea/ffffff?text=Monitor'
+                imagen: 'imagenes/monitor.webp'
             },
             'teclado-mecanico': {
                 nombre: 'Teclado Mecánico RGB',
                 precio: 129.99,
-                imagen: 'https://via.placeholder.com/300x200/764ba2/ffffff?text=Teclado'
+                imagen: 'imagenes/teclado.webp'
             }
         };
         this.carrito = this.cargarCarrito();
@@ -113,21 +113,21 @@ class CarritoCompras {
             Object.entries(this.carrito).forEach(([id, producto]) => {
                 html += `
                     <div class="carrito-item">
-                        <div style="display: flex; align-items: center; gap: 1rem;">
-                            <img src="${producto.imagen}" alt="${producto.nombre}" style="width: 80px; height: 60px; object-fit: cover; border-radius: 5px;">
-                            <div>
+                        <div class="carrito-item-info">
+                            <img src="${producto.imagen}" alt="${producto.nombre}" class="carrito-item-imagen">
+                            <div class="carrito-item-details">
                                 <h4>${producto.nombre}</h4>
                                 <p>$${producto.precio.toFixed(2)}</p>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 1rem;">
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <button onclick="carrito.cambiarCantidad('${id}', ${producto.cantidad - 1})" class="btn" style="padding: 0.25rem 0.5rem;">-</button>
-                                <span style="padding: 0 1rem; font-weight: bold;">${producto.cantidad}</span>
-                                <button onclick="carrito.cambiarCantidad('${id}', ${producto.cantidad + 1})" class="btn" style="padding: 0.25rem 0.5rem;">+</button>
+                        <div class="carrito-item-controls">
+                            <div class="carrito-cantidad-controls">
+                                <button onclick="carrito.cambiarCantidad('${id}', ${producto.cantidad - 1})" class="carrito-cantidad-btn">-</button>
+                                <span class="carrito-cantidad">${producto.cantidad}</span>
+                                <button onclick="carrito.cambiarCantidad('${id}', ${producto.cantidad + 1})" class="carrito-cantidad-btn">+</button>
                             </div>
-                            <div style="font-weight: bold;">$${(producto.precio * producto.cantidad).toFixed(2)}</div>
-                            <button onclick="carrito.eliminarProducto('${id}')" class="btn" style="background: #dc3545; padding: 0.5rem;">🗑️</button>
+                            <div class="carrito-precio-total">$${(producto.precio * producto.cantidad).toFixed(2)}</div>
+                            <button onclick="carrito.eliminarProducto('${id}')" class="carrito-eliminar-btn">🗑️</button>
                         </div>
                     </div>
                 `;

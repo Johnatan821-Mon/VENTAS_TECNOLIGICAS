@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Soporte Técnico - TecnoVentas</title>
+    <link rel="Icon" href="logo.svg" type="imagen/x-icono" sizes="192x192">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .info-container {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.7s;
+            max-width: 700px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            padding: 2rem;
+        }
+        .info-container.active {
+            display: block;
+            opacity: 1;
+        }
+        .info-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0 1rem 0;
+        }
+        .info-nav button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .info-nav button.active {
+            background: #0056b3;
+        }
+        .info-nav button:hover {
+            background: #0056b3;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="info-body">
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="logo.svg" alt="TecnoVentas Logo">
+            <span>TecnoVentas</span>
+        </a>
+        <nav class="nav">
+            <a href="productos.html">Productos</a>
+            <a href="categorias.html">Categorías</a>
+            <a href="carrito.html">🛒 Carrito</a>
+        </nav>
+    </header>
+    <main class="info-main">
+        <div class="info-container active">
+            <h1>Soporte Técnico</h1>
+            <p>En <strong>TecnoVentas</strong>, tu satisfacción es nuestra prioridad. Si tienes problemas con un producto, necesitas asistencia técnica o tienes dudas sobre su funcionamiento, estamos aquí para ayudarte.</p><br>
+
+            <h2>¿En qué podemos ayudarte?</h2>
+            <p>Ofrecemos soporte técnico en las siguientes áreas:</p>
+            <ul>
+                <li>Fallas técnicas en productos comprados (hardware o software).</li>
+                <li>Problemas de compatibilidad o configuración.</li>
+                <li>Guías de uso e instalación.</li>
+                <li>Garantías y diagnóstico previo.</li>
+                <li>Asesoría postventa para equipos tecnológicos.</li>
+            </ul><br>
+            
+            <h3>Canales de atención</h3>
+           <p>Puedes comunicarte con nuestro equipo técnico a través de los siguientes enlaces</p><br>
+        
+            <ul>
+                <li><strong>Correo electrónico:</strong> soporte@tecnoventas.com.</li>
+                <li><strong>Línea telefónica:</strong> +57 (604) 123-4567.</li>
+                <li><strong>Horario de atención:</strong> Lunes a Sábado de 9:00 a.m. a 18:00</li>
+            </ul><br>
+            
+            <h3>¿Cómo solicitar soporte?</h3>
+            <ul>
+                <li>Identifica el producto y el problema. Incluye número de pedido o factura si aplica.</li>
+                <li>Contáctanos por uno de nuestros canales de atención.</li>
+                <li>Adjunta evidencia si es posible (fotos, videos o pantallazos).</li>
+                <li>Nuestro equipo técnico evaluará tu caso y te dará respuesta en un plazo de 1 a 3 días hábiles.</li>
+            </ul><br>
+
+            <h3>¿El producto tiene garantía?</h3>
+            <p>Consulta nuestra Política de <a href="infoLogistica.html">Envíos y Devoluciones</href></a> conocer los detalles sobre garantías y condiciones de cambio o reparación.</p><br>
+
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="index.html" class="footer-logo">
+                    <img src="logo.svg" alt="TecnoVentas Logo">
+                    TecnoVentas
+                </a>
+                <p>Tu tienda de tecnología favorita. Ofrecemos los mejores productos con la más alta calidad y servicio excepcional.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Twitter">🐦</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="LinkedIn">💼</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="categorias.html">Categorías</a></li>
+                    <li><a href="carrito.html">Carrito</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <div class="contact-info">
+                    <p><strong>Teléfono:</strong> +57 (604) 123-4567</p>
+                    <p><strong>Email:</strong> info@tecnoventas.com</p>
+                    <p><strong>Dirección:</strong>  Calle 24, Centro de Medellin</p>
+                    <p><strong>Horario:</strong> Lun-Sab 9:00-18:00</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Información</h3>
+                <ul class="footer-links">
+                    <li><a href="infonosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="infopoliticas.html">Política de Privacidad</a></li>
+                    <li><a href="infoTerminos.html">Términos y Condiciones</a></li>
+                    <li><a href="infoLogistica.html">Envíos y Devoluciones</a></li>
+                    <li><a href="infoSoporte.html">Soporte Técnico</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TecnoVentas. Todos los derechos reservados. | Diseñado con ❤️ para los amantes de la tecnología</p>
+        </div>
+    </footer>
+</body>
+</html>

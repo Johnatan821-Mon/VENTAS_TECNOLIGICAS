@@ -2,35 +2,50 @@
 class CarritoCompras {
     constructor() {
         this.productos = {
-            'laptop-gaming': {
-                nombre: 'Laptop Gaming Pro',
-                precio: 1299.99,
+            'laptop-gamer-pro': {
+                nombre: 'Laptop Gamer Pro',
+                precio: 3449900,
                 imagen: 'imagenes/laptop.avif'
             },
             'smartphone-ultra': {
                 nombre: 'Smartphone Ultra',
-                precio: 699.99,
+                precio: 850000,
                 imagen: 'imagenes/celular.webp'
             },
             'tablet-pro': {
                 nombre: 'Tablet Pro',
-                precio: 899.99,
+                precio: 800000,
                 imagen: 'imagenes/tablet.jpg'
             },
             'auriculares-wireless': {
                 nombre: 'Auriculares Inalámbricos',
-                precio: 199.99,
+                precio: 179000,
                 imagen: 'imagenes/auriculares.webp'
             },
             'monitor-4k': {
                 nombre: 'Monitor 4K Gaming',
-                precio: 449.99,
+                precio: 789000,
                 imagen: 'imagenes/monitor.webp'
             },
             'teclado-mecanico': {
                 nombre: 'Teclado Mecánico RGB',
-                precio: 129.99,
+                precio: 55000,
                 imagen: 'imagenes/teclado.webp'
+            },
+            'raton-gaming': {
+                nombre: 'Ratón Gaming Inalámbrico',
+                precio: 120000,
+                imagen: 'imagenes/gaming.jpg'
+            },
+            'altavoces-bluetooth': {
+                nombre: 'Altavoces Bluetooth',
+                precio: 99000,
+                imagen: 'imagenes/hogar.jfif'
+            },
+            'cargador-rapido': {
+                nombre: 'Cargador Rápido USB-C',
+                precio: 45000,
+                imagen: 'imagenes/celular.webp'
             }
         };
         this.carrito = this.cargarCarrito();
@@ -137,8 +152,8 @@ class CarritoCompras {
 
             // Actualizar totales
             const subtotal = this.calcularSubtotal();
-            const impuestos = subtotal * 0.1;
-            const envio = subtotal > 0 ? 15.00 : 0;
+            const impuestos = subtotal * 0.19;
+            const envio = subtotal > 0 ? 250000 : 0;
             const total = subtotal + impuestos + envio;
 
             document.getElementById('subtotal').textContent = subtotal.toFixed(2);
@@ -259,3 +274,4 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 });
+

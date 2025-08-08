@@ -23,21 +23,37 @@
     <main class="main-content">
         <h1>Nuestros Productos</h1>
         <p>Descubre nuestra amplia gama de productos tecnológicos</p>
-        
+        <div class="filtros">
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" onchange="filtrarProductos()">
+                <option value="todos">Todos</option>
+                <option value="laptops">Laptops</option>
+                <option value="smartphones">Smartphones</option>
+                <option value="tablets">Tablets</option>
+                <option value="accesorios">Accesorios</option>
+            </select>
+            
+            <label for="ordenar">Ordenar por:</label>
+            <select id="ordenar" onchange="ordenarProductos()">
+                <option value="relevancia">Relevancia</option>
+                <option value="precio-asc">Precio: Bajo a Alto</option>
+                <option value="precio-desc">Precio: Alto a Bajo</option>
+            </select>
+        </div>
         <div class="productos-grid">
             <div class="producto-card">
-                <img src="imagenes/laptop.avif" alt="Laptop Gaming">
-                <h3>Laptop Gaming Pro</h3>
-                <p>Laptop de alto rendimiento con procesador Intel i7, 16GB RAM, RTX 3080 y SSD 1TB. Perfecta para gaming y trabajo profesional.</p>
-                <div class="precio">$1,299.99</div>
-                <button class="btn" onclick="agregarAlCarrito('laptop-gaming')">Agregar al Carrito</button>
+                <img src="imagenes/laptop.avif" alt="Laptop Gamer Pro">
+                <h3>Laptop Gamer Pro</h3>
+                <p>Laptop de alto rendimiento con procesador Intel i7, 16GB RAM, RTX 3080 y SSD 1TB. Perfecta para gamer y trabajo profesional.</p>
+                <div class="precio">$3.449.900,00</div>
+                <button class="btn" onclick="agregarAlCarrito('laptop-gamer-pro')">Agregar al Carrito</button>
             </div>
             
             <div class="producto-card">
                 <img src="imagenes/celular.webp" alt="Smartphone">
                 <h3>Smartphone Ultra</h3>
                 <p>Teléfono inteligente con pantalla AMOLED 6.7", cámara triple de 108MP, 128GB almacenamiento y batería de 5000mAh.</p>
-                <div class="precio">$699.99</div>
+                <div class="precio">$850.000,00</div>
                 <button class="btn" onclick="agregarAlCarrito('smartphone-ultra')">Agregar al Carrito</button>
             </div>
             
@@ -45,7 +61,7 @@
                 <img src="imagenes/tablet.jpg" alt="Tablet">
                 <h3>Tablet Pro</h3>
                 <p>Tablet de 12.9" con procesador M1, 256GB almacenamiento, compatible con Apple Pencil. Ideal para creativos y profesionales.</p>
-                <div class="precio">$899.99</div>
+                <div class="precio">$800.000,00</div>
                 <button class="btn" onclick="agregarAlCarrito('tablet-pro')">Agregar al Carrito</button>
             </div>
             
@@ -53,7 +69,7 @@
                 <img src="imagenes/auriculares.webp" alt="Auriculares">
                 <h3>Auriculares Inalámbricos</h3>
                 <p>Auriculares bluetooth con cancelación de ruido activa, 30 horas de batería y sonido Hi-Fi premium.</p>
-                <div class="precio">$199.99</div>
+                <div class="precio">$179.000,00</div>
                 <button class="btn" onclick="agregarAlCarrito('auriculares-wireless')">Agregar al Carrito</button>
             </div>
             
@@ -61,7 +77,7 @@
                 <img src="imagenes/monitor.webp" alt="Monitor">
                 <h3>Monitor 4K Gaming</h3>
                 <p>Monitor 27" 4K UHD, 144Hz, HDR400, tiempo de respuesta 1ms. Perfecto para gaming competitivo y diseño gráfico.</p>
-                <div class="precio">$449.99</div>
+                <div class="precio">$789.000,00</div>
                 <button class="btn" onclick="agregarAlCarrito('monitor-4k')">Agregar al Carrito</button>
             </div>
             
@@ -69,8 +85,30 @@
                 <img src="imagenes/teclado.webp" alt="Teclado">
                 <h3>Teclado Mecánico RGB</h3>
                 <p>Teclado mecánico con switches Cherry MX, iluminación RGB personalizable y teclas anti-ghosting.</p>
-                <div class="precio">$129.99</div>
+                <div class="precio">$55.000,00</div>
                 <button class="btn" onclick="agregarAlCarrito('teclado-mecanico')">Agregar al Carrito</button>
+            </div>
+
+            <div class="producto-card">
+                <img src="imagenes/productos34_32649.jpg" alt="Ratón">
+                <h3>Ratón Gaming Inalámbrico</h3>
+                <p>Ratón ergonómico con sensor óptico de 16000 DPI, iluminación RGB y batería recargable de larga duración.</p>
+                <div class="precio">$120.000,00</div>
+                <button class="btn" onclick="agregarAlCarrito('raton-gaming')">Agregar al Carrito</button>
+            </div>
+            <div class="producto-card">
+                <img src="imagenes/OIP.webp" alt="Altavoces">
+                <h3>Altavoces Bluetooth</h3>
+                <p>Altavoces portátiles con sonido estéreo, conectividad Bluetooth 5.0 y batería de 20 horas de duración.</p>
+                <div class="precio">$99.000,00</div>
+                <button class="btn" onclick="agregarAlCarrito('altavoces-bluetooth')">Agregar al Carrito</button>
+            </div>
+            <div class="producto-card">
+                <img src="imagenes/cargador-gan-usb-c-pd-65-w-usb-qc-35-w.jpg" alt="Cargador Rápido">
+                <h3>Cargador Rápido USB-C</h3>
+                <p>Cargador rápido de 65W con tecnología Power Delivery, compatible con laptops, smartphones y tablets.</p>
+                <div class="precio">$45.000,00</div>
+                <button class="btn" onclick="agregarAlCarrito('cargador-rapido')">Agregar al Carrito</button>
             </div>
         </div>
     </main>

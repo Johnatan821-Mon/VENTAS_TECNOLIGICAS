@@ -40,29 +40,28 @@
     <main class="info-main">
         <div class="info-container active">
             <h1>Registro de Usuario</h1>
-            <form id="form-registro" autocomplete="off" style="display: flex; flex-direction: column; gap: 1.2rem;">
+            <form id="formRegistro" autocomplete="off" style="display: flex; flex-direction: column; gap: 1.2rem;">
                 <div>
-                    <label for="nombre">Nombre completo</label><br>
-                    <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez" style="width: 100%; padding: 0.7rem; border-radius: 6px; border: 1px solid #ccc;">
+                    <label for="usuario">Usuario</label><br>
+                    <input type="text" id="usuario" name="usuario" required placeholder="Ej: juanperez" style="width: 100%; padding: 0.7rem; border-radius: 6px; border: 1px solid #ccc;">
                 </div>
                 <div>
-                    <label for="email">Correo electrónico</label><br>
-                    <input type="email" id="email" name="email" required placeholder="Ej: correo@ejemplo.com" style="width: 100%; padding: 0.7rem; border-radius: 6px; border: 1px solid #ccc;">
+                    <label for="contrasena">Contraseña</label><br>
+                    <input type="password" id="contrasena" name="contrasena" required minlength="6" placeholder="Mínimo 6 caracteres" style="width: 100%; padding: 0.7rem; border-radius: 6px; border: 1px solid #ccc;">
                 </div>
                 <div>
-                    <label for="password">Contraseña</label><br>
-                    <input type="password" id="password" name="password" required minlength="6" placeholder="Mínimo 6 caracteres" style="width: 100%; padding: 0.7rem; border-radius: 6px; border: 1px solid #ccc;">
+                    <label for="codigo">Código de invitación</label><br>
+                    <input type="text" id="codigo" name="codigo" required placeholder="Código de invitación" style="width: 100%; padding: 0.7rem; border-radius: 6px; border: 1px solid #ccc;">
                 </div>
                 <div>
-                    <label for="confirmar">Confirmar contraseña</label><br>
-                    <input type="password" id="confirmar" name="confirmar" required minlength="6" placeholder="Repite la contraseña" style="width: 100%; padding: 0.7rem; border-radius: 6px; border: 1px solid #ccc;">
+                    <label for="celular">Celular</label><br>
+                    <input type="tel" id="celular" name="celular" required placeholder="Ej: 3001234567" style="width: 100%; padding: 0.7rem; border-radius: 6px; border: 1px solid #ccc;">
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                     <input type="checkbox" id="acepto" name="acepto" required>
                     <label for="acepto" style="font-size: 0.95rem;">Acepto los <a href="infoTerminos.html" target="_blank">Términos y Condiciones</a></label>
                 </div>
                 <button type="submit" class="btn" style="background: #007bff; color: #fff; border: none; border-radius: 6px; padding: 0.9rem 0; font-size: 1.1rem; cursor: pointer; transition: background 0.3s;">Registrarme</button>
-                <div id="mensaje-registro" style="text-align:center; color: #007bff; font-weight: 500;"></div>
             </form>
         </div>
     </main>
@@ -114,23 +113,37 @@
             <p>&copy; 2024 TecnoVentas. Todos los derechos reservados. | Diseñado con ❤️ para los amantes de la tecnología</p>
         </div>
     </footer>
+    <script src="toast.js"></script>
+    <script src="auth.js"></script>
     <script>
-    // Validación básica y mensaje de éxito
-    document.getElementById('form-registro').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const nombre = document.getElementById('nombre').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const pass = document.getElementById('password').value;
-        const conf = document.getElementById('confirmar').value;
-        const mensaje = document.getElementById('mensaje-registro');
-        if (pass !== conf) {
-            mensaje.textContent = 'Las contraseñas no coinciden.';
-            mensaje.style.color = 'red';
-            return;
-        }
-    mensaje.style.color = '#007bff';
-    mensaje.textContent = '¡Registro exitoso!';
-        this.reset();
+    // Script para registro de usuario usando Auth y Toast
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('formRegistro');
+        if (!form) return;
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const usuario = form.usuario.value.trim();
+            const contrasena = form.contrasena.value.trim();
+            const codigo = form.codigo.value.trim();
+            const celular = form.celular.value.trim();
+            if (!usuario || !contrasena || !codigo || !celular) {
+                Toast.show('Todos los campos son obligatorios', 'error');
+                return;
+            }
+            const res = Auth.registerUser({ usuario, contrasena, codigo, celular });
+            if (!res.ok) {
+                Toast.show(res.error || 'Error al registrar', 'error');
+                return;
+            }
+            Auth.setSessionUser(usuario);
+            Toast.show('Usuario registrado correctamente', 'success');
+            if (window.updateNavbar) {
+                window.updateNavbar();
+            } else if (window.dispatchEvent) {
+                window.dispatchEvent(new StorageEvent('storage', { key: 'tienda.session' }));
+            }
+            form.reset();
+        });
     });
     </script>
 </body>

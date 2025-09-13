@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>TecnoVentas - Pago</title>
+    <link rel="Icon" href="logo.svg" type="imagen/x-icono" sizes="192x192" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="pago-body">
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="logo.svg" alt="TecnoVentas Logo" />
+            <span>TecnoVentas</span>
+        </a>
+        <nav class="nav">
+            <a href="productos.html">Productos</a>
+            <a href="categorias.html">Categorías</a>
+            <a href="carrito.html">🛒 Carrito</a>
+            <a href="registro.html">Registro</a>
+        </nav>
+    </header>
+
+    <main class="pago-main">
+        <h1>Finalizar Compra</h1>
+        <p>Revisa tu pedido e ingresa los datos de pago.</p>
+
+        <section class="resumen-pedido" aria-labelledby="titulo-resumen">
+            <h2 id="titulo-resumen">Resumen del Pedido</h2>
+            <div id="lista-items-pedido" class="lista-items-pedido">
+                <!-- Los items del carrito se inyectarán aquí dinámicamente -->
+            </div>
+            <div class="resumen-totales" id="resumen-totales">
+                <div class="linea-total"><span>Subtotal:</span><strong id="pago-subtotal">$0</strong></div>
+                <div class="linea-total"><span>IVA (19%):</span><strong id="pago-iva">$0</strong></div>
+                <div class="linea-total"><span>Envío:</span><strong id="pago-envio">$0</strong></div>
+                <div class="linea-total total-final"><span>Total:</span><strong id="monto-total">$0</strong></div>
+            </div>
+            <div class="acciones-resumen">
+                <a href="carrito.html" id="btn-volver-carrito" class="btn btn-secundario">Volver al Carrito</a>
+            </div>
+        </section>
+
+        <section class="metodo-pago" aria-labelledby="titulo-pago">
+            <h2 id="titulo-pago">Método de Pago</h2>
+            <form id="form-pago" class="form-pago" autocomplete="on" novalidate>
+                <fieldset class="fieldset">
+                    <legend>Datos del Titular</legend>
+                    <label for="nombreTitular">Nombre del titular</label>
+                    <input type="text" id="nombreTitular" name="nombreTitular" placeholder="Nombre Apellido" required />
+
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required />
+
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="3001234567" pattern="[0-9]{7,}" />
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <legend>Dirección de Facturación</legend>
+                    <label for="direccion">Dirección</label>
+                    <input type="text" id="direccion" name="direccion" placeholder="Calle 123 #45-67" required />
+
+                    <label for="ciudad">Ciudad</label>
+                    <input type="text" id="ciudad" name="ciudad" required />
+
+                    <label for="departamento">Departamento / Estado</label>
+                    <input type="text" id="departamento" name="departamento" />
+
+                    <label for="codigoPostal">Código Postal</label>
+                    <input type="text" id="codigoPostal" name="codigoPostal" />
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <legend>Detalles de la Tarjeta</legend>
+                    <div id="grupo-tarjeta" class="grupo-pago">
+                        <label for="numeroTarjeta">Número de tarjeta</label>
+                        <input type="text" id="numeroTarjeta" name="numeroTarjeta" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" data-luhn required />
+                        <small id="valida-numero" class="mensaje-validacion"></small>
+
+                        <div class="fila-2">
+                            <div>
+                                <label for="expiracion">Expiración (MM/AA)</label>
+                                <input type="text" id="expiracion" name="expiracion" inputmode="numeric" maxlength="5" placeholder="MM/AA" required />
+                            </div>
+                            <div>
+                                <label for="cvv">CVV</label>
+                                <input type="password" id="cvv" name="cvv" inputmode="numeric" maxlength="4" placeholder="***" required />
+                            </div>
+                        </div>
+                        <small id="valida-exp" class="mensaje-validacion"></small>
+                    </div>
+
+                    <div id="grupo-pse" class="grupo-pago" style="display:none;">
+                        <label for="bancoPse">Selecciona tu Banco</label>
+                        <select id="bancoPse" name="bancoPse">
+                            <option value="" disabled selected>-- Selecciona --</option>
+                            <option value="bancolombia">Bancolombia</option>
+                            <option value="davivienda">Davivienda</option>
+                            <option value="bbva">BBVA</option>
+                            <option value="colpatria">Scotiabank Colpatria</option>
+                        </select>
+                        <p class="nota-metodo">Serás redirigido a la pasarela del banco para completar el pago.</p>
+                    </div>
+
+                    <div id="grupo-contraentrega" class="grupo-pago" style="display:none;">
+                        <p class="nota-metodo">Pagarás en efectivo al recibir el producto. Verifica que los datos de contacto y dirección sean correctos.</p>
+                    </div>
+
+                    <div class="metodos-alternativos">
+                        <p><strong>Otros métodos:</strong></p>
+                        <label><input type="radio" name="metodoAlterno" value="tarjeta" checked /> Tarjeta</label>
+                        <label><input type="radio" name="metodoAlterno" value="pse" /> PSE / Transferencia</label>
+                        <label><input type="radio" name="metodoAlterno" value="contraentrega" /> Pago Contra Entrega</label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <legend>Confirmación</legend>
+                    <label class="checkbox">
+                        <input type="checkbox" id="aceptoTerminos" required /> Acepto los <a href="infoTerminos.html" target="_blank">Términos y Condiciones</a>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" id="aceptoPrivacidad" required /> He leído la <a href="infoPoliticas.html" target="_blank">Política de Privacidad</a>
+                    </label>
+                </fieldset>
+
+                <button type="submit" class="btn btn-pagar" id="btn-confirmar-pago">Confirmar Pago</button>
+                <p id="mensaje-estado-pago" class="mensaje-estado" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="index.html" class="footer-logo">
+                    <img src="logo.svg" alt="TecnoVentas Logo" />
+                    TecnoVentas
+                </a>
+                <p>Tu tienda de tecnología favorita.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Ayuda</h3>
+                <ul class="footer-links">
+                    <li><a href="infoSoporte.html">Soporte Técnico</a></li>
+                    <li><a href="infoLogistica.html">Envíos y Devoluciones</a></li>
+                    <li><a href="infoPoliticas.html">Privacidad</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 TecnoVentas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/utils/toast.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/pago.js"></script>
+</body>
+</html>

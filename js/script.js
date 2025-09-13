@@ -205,16 +205,8 @@ class CarritoCompras {
             this.mostrarNotificacion('El carrito está vacío');
             return;
         }
-
-        const total = this.calcularSubtotal() + (this.calcularSubtotal() * 0.1) + 15.00;
-        
-        if (confirm(`¿Proceder con el pago de $${total.toFixed(2)}?`)) {
-            this.mostrarNotificacion('¡Gracias por tu compra! Procesando el pago...');
-            setTimeout(() => {
-                this.vaciarCarrito();
-                this.mostrarNotificacion('¡Pago exitoso! Tu pedido está en camino.');
-            }, 2000);
-        }
+        // Guardar estado actual (ya se guarda en localStorage); solo navegamos.
+        window.location.href = 'pago.html';
     }
 }
 

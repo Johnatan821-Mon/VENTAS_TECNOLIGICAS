@@ -3,25 +3,25 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>TecnoVentas - Inicio</title>
-    <link rel="Icon" href="logo.svg" type="imagen/x-icono" sizes="192x192">
+    <title>Inicio - Impulso 360</title>
+    <link rel="Icon" href="imagenes/logo de nav.png" type="imagen/x-icono" sizes="192x192">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="inicio-body">
     <header class="header">
         <a href="index.html" class="logo">
-            <img src="logo.svg" alt="TecnoVentas Logo">
-            <span>TecnoVentas</span>
+            <img src="imagenes/logo.png" alt="Impulso 360 Logo">
+
         </a>
         <nav class="nav">
             <a href="productos.html">Productos</a>
             <a href="categorias.html">Categorías</a>
             <a href="carrito.html">🛒 Carrito</a>
-            <a href="registro.html">Registro</a>
+            
         </nav>
     </header>
     <main class="inicio-main">
-        <h1>Bienvenido a TecnoVentas</h1>
+        <h1>Bienvenido a Impulso 360°</h1>
         <p>Tu tienda de tecnología favorita.</p>
         
         <section class="productos-destacados">
@@ -54,12 +54,11 @@
         <div class="footer-content">
             <div class="footer-section">
                 <a href="index.html" class="footer-logo">
-                    <img src="logo.svg" alt="TecnoVentas Logo">
-                    TecnoVentas
+                    <img src="imagenes/logo.png" alt="Impulso 360 Logo">
                 </a>
                 <p>Tu tienda de tecnología favorita. Ofrecemos los mejores productos con la más alta calidad y servicio excepcional.</p>
                 <div class="social-links">
-                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Facebook"></a>
                     <a href="#" title="Twitter">🐦</a>
                     <a href="#" title="Instagram">📷</a>
                     <a href="#" title="LinkedIn">💼</a>
@@ -73,7 +72,6 @@
                     <li><a href="productos.html">Productos</a></li>
                     <li><a href="categorias.html">Categorías</a></li>
                     <li><a href="carrito.html">Carrito</a></li>
-                    <li><a href="registro.html">Registro</a></li>
                 </ul>
             </div>
             
@@ -81,7 +79,7 @@
                 <h3>Contacto</h3>
                 <div class="contact-info">
                     <p><strong>Teléfono:</strong> +57 (604) 123-4567</p>
-                    <p><strong>Email:</strong> info@tecnoventas.com</p>
+                    <p><strong>Email:</strong> info@impulso360.com</p>
                     <p><strong>Dirección:</strong>  Calle 24, Centro de Medellin</p>
                     <p><strong>Horario:</strong> Lun-Sab 9:00-18:00</p>
                 </div>
@@ -100,8 +98,15 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2024 TecnoVentas. Todos los derechos reservados. | Diseñado con ❤️ para los amantes de la tecnología</p>
+            <p>&copy; 2024 Impulso 360. Todos los derechos reservados. | Diseñado con ❤️ para los amantes de la tecnología</p>
         </div>
     </footer>
+    <script src="js/utils/toast.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/session.js"></script>
+        <script src="js/socials.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){ if (window.Socials) Socials.render(); });
+        </script>
 </body>
 </html>

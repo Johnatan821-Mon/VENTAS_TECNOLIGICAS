@@ -1,4 +1,4 @@
-// script.js
+
 class CarritoCompras {
     constructor() {
         this.productos = {
@@ -112,7 +112,7 @@ class CarritoCompras {
         const carritoVacio = document.getElementById('carrito-vacio');
         const carritoTotal = document.getElementById('carrito-total');
 
-        if (!carritoItems) return; // Si no estamos en la página del carrito
+        if (!carritoItems) return;
 
         const itemsCarrito = Object.keys(this.carrito);
 
@@ -150,7 +150,7 @@ class CarritoCompras {
 
             carritoItems.innerHTML = html;
 
-            // Actualizar totales
+           
             const subtotal = this.calcularSubtotal();
             const impuestos = subtotal * 0.19;
             const envio = subtotal > 0 ? 250000 : 0;
@@ -164,7 +164,7 @@ class CarritoCompras {
     }
 
     mostrarNotificacion(mensaje) {
-        // Crear elemento de notificación
+
         const notificacion = document.createElement('div');
         notificacion.textContent = mensaje;
         notificacion.style.cssText = `
@@ -184,13 +184,13 @@ class CarritoCompras {
 
         document.body.appendChild(notificacion);
 
-        // Animar entrada
+        
         setTimeout(() => {
             notificacion.style.opacity = '1';
             notificacion.style.transform = 'translateX(0)';
         }, 100);
 
-        // Animar salida y eliminar
+      
         setTimeout(() => {
             notificacion.style.opacity = '0';
             notificacion.style.transform = 'translateX(100%)';
@@ -205,15 +205,15 @@ class CarritoCompras {
             this.mostrarNotificacion('El carrito está vacío');
             return;
         }
-        // Guardar estado actual (ya se guarda en localStorage); solo navegamos.
+        
         window.location.href = 'pago.html';
     }
 }
 
-// Inicializar carrito al cargar la página
+
 const carrito = new CarritoCompras();
 
-// Funciones globales para usar en HTML
+
 function agregarAlCarrito(productoId) {
     carrito.agregarProducto(productoId);
 }
@@ -226,9 +226,9 @@ function procederPago() {
     carrito.procederPago();
 }
 
-// Animaciones y efectos adicionales
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Añadir efecto parallax suave en la página de inicio
+    
     if (document.body.classList.contains('inicio-body')) {
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Añadir efectos de hover mejorados
+    
     const cards = document.querySelectorAll('.producto-card, .categoria-card');
     cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Animación de carga para las tarjetas
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {

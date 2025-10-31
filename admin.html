@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Admin - Añadir Productos - Impulso 360</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-page">
+  <header class="topbar">
+    <h2>Panel de Administración — Impulso 360</h2>
+    <div>
+      <a href="index.html">Volver al sitio</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="panel left">
+      <h1>Agregar producto</h1>
+      <p class="admin-note">Rellena al menos la URL de la imagen. Nombre y precio son opcionales.</p>
+      <form id="productForm">
+        <div class="form-row">
+          <label class="small">Imagen (URL) *</label>
+          <input type="url" id="imgUrl" placeholder="https://.../imagen.jpg" required>
+        </div>
+        <div class="form-row">
+          <label class="small">Nombre</label>
+          <input type="text" id="name" placeholder="Nombre del producto" required>
+        </div>
+        <div class="form-row">
+          <label class="small">Precio</label>
+          <input type="number" id="price" placeholder="0.00" step="0.01" min="0.01" required>
+        </div>
+        <div class="form-row">
+          <label class="small">Descripción</label>
+          <textarea id="desc" placeholder="Descripción breve (opcional)"></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn-primary" type="submit">Agregar producto</button>
+          <button type="button" class="btn-ghost" id="clearBtn">Limpiar</button>
+        </div>
+      </form>
+
+      
+      <hr style="margin:1rem 0; border:none; border-top:1px solid rgba(0,0,0,0.06);">
+      <h2 style="margin-bottom:0.6rem;">Redes sociales</h2>
+      <p class="small admin-note">Agrega el enlace al perfil y la URL del icono (png/svg). Se mostrarán en el footer del sitio.</p>
+      <form id="socialForm" style="display:flex; flex-direction:column; gap:0.6rem;">
+        <div class="form-row">
+          <label class="small">Nombre plataforma</label>
+          <input type="text" name="platform" placeholder="Ej: Facebook">
+        </div>
+        <div class="form-row">
+          <label class="small">URL del perfil *</label>
+          <input type="url" name="profileUrl" placeholder="https://facebook.com/tu-perfil" required>
+        </div>
+        <div class="form-row">
+          <label class="small">URL del icono (imagen) *</label>
+          <input type="url" name="iconUrl" placeholder="https://.../fb-icon.png" required>
+        </div>
+        <div class="form-actions">
+          <button class="btn-primary" type="submit">Agregar enlace social</button>
+          <button type="button" class="btn-ghost" id="clearSocials">Limpiar formulario</button>
+        </div>
+      </form>
+      <div id="socialsList" style="margin-top:0.8rem;"></div>
+
+    </div>
+
+    <div class="panel right">
+      <h1>Productos agregados</h1>
+      <div id="productsList" class="product-grid"></div>
+    </div>
+  </div>
+
+  <script src="js/utils/toast.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/session.js"></script>
+  <script src="js/socials.js"></script>
+  <script>
+    (function(){
+      const session = Auth.getSessionUser && Auth.getSessionUser();
+      const users = JSON.parse(localStorage.getItem('tienda.usuarios') || '[]');
+      const me = users.find(u => u.usuario === session);
+      if (!me || me.role !== 'admin'){
+        document.body.innerHTML = '<div style="max-width:700px;margin:4rem auto;padding:1.2rem;background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.06);text-align:center;"><h2>Acceso restringido</h2><p>No tienes permisos de administrador. Por favor <a href="login.html">inicia sesión</a> con una cuenta de administrador.</p></div>';
+        return;
+      }
+
+      const form = document.getElementById('productForm');
+      const imgUrl = document.getElementById('imgUrl');
+      const nameEl = document.getElementById('name');
+      const priceEl = document.getElementById('price');
+      const descEl = document.getElementById('desc');
+      const list = document.getElementById('productsList');
+      const clearBtn = document.getElementById('clearBtn');
+
+      function loadProducts(){
+        const prods = JSON.parse(localStorage.getItem('tienda.productos') || '[]');
+    
+        prods.sort((a,b)=> (b.createdAt||0)-(a.createdAt||0));
+        renderProducts(prods);
+      }
+      function renderProducts(prods){
+        list.innerHTML = '';
+        if (!prods.length){
+          list.innerHTML = '<div class="small">No hay productos aún.</div>';
+          return;
+        }
+        prods.forEach(p=>{
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <img src="${p.image}" alt="${(p.name||'Producto')}">
+            <div class="title">${p.name || 'Producto'}</div>
+            <div class="small">${p.description || ''}</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+              <div class="price">${p.price ? ('$' + Number(p.price).toFixed(2)) : ''}</div>
+              <div class="actions">
+                <button class="btn-ghost" data-id="${p.id}" onclick="(function(id){ if(confirm('Eliminar este producto?')){ const arr=JSON.parse(localStorage.getItem('tienda.productos')||'[]'); const n=arr.filter(x=>x.id!==id); localStorage.setItem('tienda.productos', JSON.stringify(n)); Toast.show('Producto eliminado'); loadProducts(); } })('${p.id}')">Eliminar</button>
+              </div>
+            </div>
+          `;
+          list.appendChild(card);
+        });
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const image = imgUrl.value.trim();
+        
+        if (!image || !/^https?:\/\//i.test(image)){
+          Toast.show('La URL de la imagen es obligatoria y debe comenzar con http:// o https://');
+          return;
+        }
+        const name = nameEl.value.trim();
+        if (!name){ Toast.show('El nombre del producto es obligatorio'); return; }
+        const priceRaw = priceEl.value;
+        const priceNum = Number(priceRaw);
+        if (!priceRaw || isNaN(priceNum) || priceNum <= 0){ Toast.show('El precio es obligatorio y debe ser mayor a 0'); return; }
+        const price = priceNum.toFixed(2);
+        const description = descEl.value.trim() || '';
+        const prods = JSON.parse(localStorage.getItem('tienda.productos') || '[]');
+        const id = 'p_' + Date.now();
+        prods.push({ id, name, price, image, description, createdAt: Date.now() });
+        localStorage.setItem('tienda.productos', JSON.stringify(prods));
+        Toast.show('Producto agregado correctamente');
+        form.reset();
+        loadProducts();
+      });
+
+      clearBtn.addEventListener('click', function(){ form.reset(); });
+
+      window.loadProducts = loadProducts;
+
+      loadProducts();
+      
+      if (window.Socials){
+        try{ Socials.initAdmin('#socialForm','#socialsList'); }catch(e){}
+        try{ Socials.render(); }catch(e){}
+      }
+    })();
+  </script>
+</body>
+</html>

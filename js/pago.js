@@ -1,4 +1,4 @@
-// pago.js - lógica de la página de pago
+
 document.addEventListener('DOMContentLoaded', function(){
     const lista = document.getElementById('lista-items-pedido');
     const montoTotal = document.getElementById('monto-total');
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function(){
         return (suma % 10) === 0;
     }
 
-    // Eventos de tarjeta
+
     if(numeroTarjeta){
         numeroTarjeta.addEventListener('input', e => {
             const limpio = limpiarNumeroTarjeta(e.target.value);
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     }
 
-    // Cambiar métodos
+
     metodoRadios.forEach(r => r.addEventListener('change', actualizarMetodos));
     function actualizarMetodos(){
         const val = document.querySelector('input[name="metodoAlterno"]:checked').value;
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function(){
             return;
         }
         if(metodo === 'tarjeta'){
-            // Validaciones extra
+         
             if(!luhnValido(numeroTarjeta.value)){
                 msg.textContent = 'Número de tarjeta inválido.';
                 return;

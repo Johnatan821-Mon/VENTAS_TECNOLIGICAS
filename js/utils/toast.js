@@ -1,4 +1,4 @@
-// Utilidad global de Toast sencilla
+
 (function () {
 	function ensureToastElement() {
 		let toastEl = document.querySelector(".toast");

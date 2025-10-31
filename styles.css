@@ -114,8 +114,8 @@ body {
 }
 
 .logo img {
-    width: 40px;
-    height: 40px;
+    width: 140px;
+    height: 60px;
     margin-right: 10px;
     border-radius: 8px;
 }
@@ -429,6 +429,84 @@ body {
     flex: 1;
 }
 
+
+
+.admin-page {
+    background: #f7f9fb;
+    color: #222;
+    min-height: 100vh;
+}
+.admin-page .topbar { max-width:1100px; margin:1rem auto; display:flex; justify-content:space-between; align-items:center; padding:0 1rem; }
+.admin-page .container { max-width:1100px; margin: 2rem auto; display:flex; gap:1.2rem; padding: 0 1rem; }
+.admin-page .panel { background:#fff; border-radius:10px; padding:1.2rem; box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+.admin-page .left { flex: 0 0 380px; }
+.admin-page .right { flex:1; min-height:300px; display:flex; flex-direction:column; gap:0.8rem; }
+.admin-page h1 { margin:0 0 0.6rem 0; font-size:1.25rem; }
+.admin-page .form-row { display:flex; flex-direction:column; gap:0.35rem; margin-bottom:0.8rem; }
+.admin-page input[type="text"], .admin-page input[type="number"], .admin-page textarea { width:100%; padding:0.65rem; border-radius:6px; border:1px solid #d9dfe6; font-size:0.95rem; background:#fafafa; }
+.admin-page textarea { min-height:100px; resize:vertical; }
+.admin-page .btn-primary { background:#007bff; color:#fff; border:none; padding:0.6rem 0.95rem; border-radius:8px; cursor:pointer; font-weight:600; box-shadow: 0 6px 18px rgba(0,123,255,0.12); }
+.admin-page .btn-primary:hover { transform: translateY(-2px); }
+.admin-page .small { font-size:0.9rem; color:#666; }
+.admin-page .product-grid { display:flex; flex-wrap:wrap; gap:0.9rem; }
+.admin-page .card { background:#fff; border-radius:8px; padding:0.6rem; width:200px; box-shadow:0 4px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:0.5rem; }
+.admin-page .card img { width:100%; height:120px; object-fit:cover; border-radius:6px; }
+.admin-page .card .title { font-weight:700; font-size:0.95rem; }
+.admin-page .card .price { color:#007bff; font-weight:700; }
+.admin-page .actions { display:flex; gap:0.5rem; }
+.admin-page .btn-ghost { background:transparent; border:1px solid #e1e6ee; padding:0.4rem 0.6rem; border-radius:6px; cursor:pointer; }
+.admin-page .admin-note { margin-bottom:0.8rem; font-size:0.95rem; }
+.admin-page .hidden { display:none; }
+
+@media (max-width: 900px) {
+    .admin-page .container { flex-direction:column; }
+    .admin-page .left { flex: 1 1 auto; }
+}
+
+
+.admin-page {
+    /* Use the same hero gradient as product/category pages for harmony */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #222;
+    min-height: 100vh;
+}
+.admin-page .topbar {
+    /* Match the site header look */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 1rem 5%;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.admin-page .topbar h2 { color: #333; font-size:1.15rem; margin:0; }
+.admin-page .topbar a { color: #667eea; text-decoration:none; font-weight:700; }
+.admin-page .panel.left { border: 1px solid rgba(0,0,0,0.04); }
+.admin-page .panel.right { border: 1px dashed rgba(0,0,0,0.03); }
+.admin-page .form-actions { display:flex; gap:0.6rem; align-items:center; margin-top:0.4rem; }
+.admin-page .note { margin-top:0.8rem; color:#444; }
+.admin-page .card { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.admin-page .card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,0.08); }
+.admin-page .price { color:#667eea; font-weight:700; }
+.admin-page .btn-ghost { background:transparent; border:1px solid rgba(102,126,234,0.12); color:#334; }
+
+/* make inputs and buttons a bit larger on admin */
+.admin-page input[type="text"], .admin-page input[type="number"], .admin-page textarea { font-size:1rem; }
+.admin-page .btn-primary { padding:0.7rem 1rem; font-size:1rem; background:#667eea; border:none; color:#fff; }
+.admin-page .btn-primary:hover { background:#5a6fd8; }
+
+/* responsive tweaks */
+@media (max-width:600px){
+  .admin-page .card { width: 100%; }
+  .admin-page .left { order: 2; }
+  .admin-page .right { order: 1; }
+}
+
+/* Password toggle styles */
+.pwd-wrapper { position: relative; display: block; }
+.pwd-wrapper input { padding-right: 3.2rem; }
+.pwd-toggle { position: absolute; right: 0.45rem; top: 50%; transform: translateY(-50%); background: transparent; border: none; cursor: pointer; color: #667eea; padding: 0.25rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 6px; }
+.pwd-toggle:focus { outline: none; box-shadow: 0 0 0 3px rgba(102,126,234,0.12); }
+.pwd-toggle.active { color: #0056b3; }
 .categoria-badge {
     font-size: 1.2rem;
     font-weight: bold;
@@ -443,7 +521,7 @@ body {
     margin-top: auto;
 }
 
-/* Cart */
+
 .carrito-item {
     background: white;
     border-radius: 10px;
@@ -559,7 +637,7 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer */
+
 .footer {
     background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     color: white;
@@ -679,11 +757,11 @@ body {
 }
 
 .footer-logo img {
-    width: 30px;
-    height: 30px;
+    width: 150px;
+    height: 65px;
 }
 
-/* Animations */
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -695,7 +773,7 @@ body {
     }
 }
 
-/* Responsive Design */
+
 @media (max-width: 1024px) {
     .destacados-grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -810,7 +888,7 @@ body {
         justify-content: center;
     }
 
-    /* Footer responsive */
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -821,7 +899,7 @@ body {
         text-align: center;
     }
 
-    /* Productos destacados responsive mobile */
+    
     .destacados-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -849,7 +927,7 @@ body {
     }
 }
 
-/* Media query para tablets */
+
 @media (min-width: 769px) and (max-width: 1024px) {
     .destacados-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -862,3 +940,38 @@ body {
         margin: 0 auto;
     }
 }
+
+
+#userArea {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-left: 1rem;
+}
+
+.user-greeting {
+    font-weight: 600;
+    color: #222;
+}
+
+.nav-cta {
+    display: inline-block;
+    background: #007bff;
+    color: #fff;
+    padding: 0.35rem 0.6rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+.nav-cta:hover { background: #0069d9; transform: translateY(-2px); }
+
+.logout-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: transparent;
+    padding: 0;
+}
+

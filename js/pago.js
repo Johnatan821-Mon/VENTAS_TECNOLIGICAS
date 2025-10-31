@@ -57,11 +57,15 @@ document.addEventListener('DOMContentLoaded', function(){
             });
         }
         const iva = subtotal * 0.19;
-        const envio = subtotal > 0 ? 250000 : 0;
+        // Regla de envío: gratis para compras >= 150.000, 20.000 para compras menores a 150.000 (si hay productos)
+        let envio = 0;
+        if (subtotal > 0) {
+            envio = subtotal >= 150000 ? 0 : 20000;
+        }
         const total = subtotal + iva + envio;
         subtotalEl.textContent = formatearMoneda(subtotal);
         ivaEl.textContent = formatearMoneda(iva);
-        envioEl.textContent = formatearMoneda(envio);
+    envioEl.textContent = formatearMoneda(envio);
         montoTotal.textContent = formatearMoneda(total);
         return {subtotal, iva, envio, total};
     }

@@ -153,7 +153,11 @@ class CarritoCompras {
            
             const subtotal = this.calcularSubtotal();
             const impuestos = subtotal * 0.19;
-            const envio = subtotal > 0 ? 250000 : 0;
+            
+            let envio = 0;
+            if (subtotal > 0) {
+                envio = subtotal >= 150000 ? 0 : 20000;
+            }
             const total = subtotal + impuestos + envio;
 
             document.getElementById('subtotal').textContent = subtotal.toFixed(2);

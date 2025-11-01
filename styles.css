@@ -465,13 +465,11 @@ body {
 
 
 .admin-page {
-    /* Use the same hero gradient as product/category pages for harmony */
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #222;
     min-height: 100vh;
 }
 .admin-page .topbar {
-    /* Match the site header look */
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
     padding: 1rem 5%;
@@ -489,19 +487,19 @@ body {
 .admin-page .price { color:#667eea; font-weight:700; }
 .admin-page .btn-ghost { background:transparent; border:1px solid rgba(102,126,234,0.12); color:#334; }
 
-/* make inputs and buttons a bit larger on admin */
+
 .admin-page input[type="text"], .admin-page input[type="number"], .admin-page textarea { font-size:1rem; }
 .admin-page .btn-primary { padding:0.7rem 1rem; font-size:1rem; background:#667eea; border:none; color:#fff; }
 .admin-page .btn-primary:hover { background:#5a6fd8; }
 
-/* responsive tweaks */
+
 @media (max-width:600px){
   .admin-page .card { width: 100%; }
   .admin-page .left { order: 2; }
   .admin-page .right { order: 1; }
 }
 
-/* Password toggle styles */
+
 .pwd-wrapper { position: relative; display: block; }
 .pwd-wrapper input { padding-right: 3.2rem; }
 .pwd-toggle { position: absolute; right: 0.45rem; top: 50%; transform: translateY(-50%); background: transparent; border: none; cursor: pointer; color: #667eea; padding: 0.25rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 6px; }
@@ -727,6 +725,23 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
+
+
+.social-links .social-icon {
+    --social-icon-size: 28px;
+    width: var(--social-icon-size);
+    height: var(--social-icon-size);
+    object-fit: cover;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+
+.social-links .social-icon[data-placeholder="facebook"]  { --social-icon-size: 32px; }
+.social-links .social-icon[data-placeholder="twitter"]   { --social-icon-size: 32px; }
+.social-links .social-icon[data-placeholder="instagram"] { --social-icon-size: 32px; }
+.social-links .social-icon[data-placeholder="linkedin"]  { --social-icon-size: 32px; }
+
 
 .contact-info {
     color: #bdc3c7;
